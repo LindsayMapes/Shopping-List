@@ -4,6 +4,7 @@ window.onload = function () {
 
 function initShoppingList() {
     let form = document.getElementById("item-form")
+    console.log(form);
 
     form.addEventListener("submit", (event) => {
         handleItemForm(event, form);
@@ -22,7 +23,7 @@ function handleItemForm(event, formRef) {
     return false;
 }
 
-    function addItemToShoppingList(){
+function addItemToShoppingList(){
     let itemName = document.getElementById("item-name");
     let itemAmount = document.getElementById("item-amount");
     let id = getRandomInt(0, 10000000);
@@ -37,18 +38,18 @@ function handleItemForm(event, formRef) {
 function setDeleteButtonEvent(id) {
     let deleteButton = document.getElementById("button"+id);
     deleteButton.addEventListener("click", () => {
-       removeListItem(id);
+        removeListItem(id);
     });
 }
 
-function createListItemHtml(itemName, itemAmount) {
+function createListItemHtml(itemName, itemAmount, id) {
     return `<li id="item${id}">
                 ${itemName} - ${itemAmount}
                 <button id="button${id}" type="button">Delete Item</button>
             </li>`;
 }
 function removeListItem(id) {
-    let ListItem = document.getElementById("item"+id);
+    let listItem = document.getElementById("item"+id);
     listItem.parentNode.removeChild(listItem);
 
 }
